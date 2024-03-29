@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyGlow Cosmetics</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-image: url('https://imgur.com/KvaTldQ.jpg'); /* Add your background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #ffcccc;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        /* Product Info section styles */
+        .product-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px 0;
+            color: #333;
+        }
+
+        .product-info img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .features,
+        .benefits {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .features h2,
+        .benefits h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .features ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .features li {
+            margin-bottom: 10px;
+        }
+
+        /* Call to Action section styles */
+        .cta {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .cta p {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ffcccc;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff9999;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #ffcccc;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BeautyGlow'H' Cosmetics</h1>
+        <p>Discover Your Beauty's True Potential</p>
+    </header>
+
+    <section class="product-info">
+        
+        <div class="features">
+            <h2>Features:</h2>
+            <ul>
+                <li>Enhanced skincare formulations</li>
+                <li>Natural ingredients</li>
+                <li>Cruelty-free and vegan options</li>
+                <li>Beautiful packaging</li>
+		<li>Benefits:Revitalize your skin and embrace your natural beauty with BeautyGlow!</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta">
+        <p>Ready to glow from within?</p>
+        <a href="#buy-now" class="btn">Shop Now</a>
+    </section>
+
+    <footer>
+        <p>© 2024 BeautyGlow'H' Cosmetics. All rights reserved.</p>
+    </footer>
+</body>
+</html>

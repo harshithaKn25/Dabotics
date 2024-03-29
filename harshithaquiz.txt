@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+           background-color:gray;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #quiz-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white(255, 255, 255, 0.8);
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .option-button {
+            margin: 5px;
+            padding: 10px;
+            width: 120px;
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .answer-box {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #black;
+            display: none;
+        }
+        #next-button, #start-button, #pause-button, #resume-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #pause-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #timer {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #ccc, rgba(0, 0, 0, 0));
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <h1>Quiz App</h1>
+    <div id="question"></div>
+    <div class="options-container" id="options"></div>
+    <hr>
+    <div id="answer-box" class="answer-box"></div>
+    <div id="timer"></div>
+    <button id="start-button" onclick="startQuiz()">Start</button>
+    <button id="pause-button" onclick="pauseTimer()">Pause</button>
+    <button id="resume-button" onclick="resumeTimer()">Resume</button>
+    <button id="next-button" onclick="nextQuestion()" style="display: none;">Next</button>
+</div>
+
+<script>
+    const quizData = [
+        {
+            question: "What is the capital of France?",
+            options: ["Paris", "Berlin", "London", "Madrid"],
+            correctAnswer: "Paris"
+        },
+        {
+            question: "Which planet is known as the Red Planet?",
+            options: ["Earth", "Mars", "Venus", "Jupiter"],
+            correctAnswer: "Mars"
+        },
+        {
+            question: "What is the largest mammal in the world?",
+            options: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+            correctAnswer: "Blue Whale"
+        },
+    ];
+
+    let currentQuestion = 0;
+    let timerSeconds = 5; // Change the timer duration in seconds
+    let timerInterval;
+
+    function startQuiz() {
+        document.getElementById("start-button").style.display = "none";
+        document.getElementById("pause-button").style.display = "block";
+        loadQuestion();
+    }
+
+    function startTimer() {
+        const timerElement = document.getElementById("timer");
+
+        timerInterval = setInterval(() => {
+            timerElement.textContent = `Time left: ${timerSeconds} seconds`;
+
+            if (timerSeconds === 0) {
+                clearInterval(timerInterval);
+                checkAnswer(); // Auto-submit if the timer reaches zero
+            }
+
+            timerSeconds--;
+        }, 1000);
+    }
+
+    function loadQuestion() {
+        const questionElement = document.getElementById("question");
+        const optionsElement = document.getElementById("options");
+        const answerBox = document.getElementById("answer-box");
+        const nextButton = document.getElementById("next-button");
+        const pauseButton = document.getElementById("pause-button");
+        const resumeButton = document.getElementById("resume-button");
+
+        answerBox.style.display = "none"; // Hide answer box for the current question
+        nextButton.style.display = "none"; // Hide Next button until an option is selected
+
+        timerSeconds = 5; // Reset timer for each question
+        startTimer();
+
+        questionElement.textContent = quizData[currentQuestion].question;
+        optionsElement.innerHTML = "";
+
+        quizData[currentQuestion].options.forEach((option, index) => {
+            const button = document.createElement("button");
+            button.textContent = option;
+            button.className = "option-button";
+            button.onclick = () => checkAnswer(option);
+            optionsElement.appendChild(button);
+        });
+
+        pauseButton.style.display = "block"; // Show Pause button
+        resumeButton.style.display = "none"; // Hide Resume button
+    }
+
+    function checkAnswer(selectedAnswer) {
+        const correctAnswer = quizData[currentQuestion].correctAnswer;
+        const answerBox = document.getElementById("answer-box");
+        const nextButton = document.getElementById("next-button");
+        const pauseButton = document.getElementById("pause-button");
+        const resumeButton = document.getElementById("resume-button");
+        const timerElement = document.getElementById("timer");
+
+        clearInterval(timerInterval); // Stop the timer
+
+        pauseButton.style.display = "none"; // Hide Pause button
+        resumeButton.style.display = "none"; // Hide Resume button
+
+        nextButton.style.display = "block"; // Show Next button after an option is selected
+        timerElement.textContent = ""; // Clear timer display
+
+        if (selectedAnswer === correctAnswer) {
+            answerBox.style.backgroundColor = "#a5d6a7";
+            answerBox.style.display = "block";
+            answerBox.textContent = "Correct! The answer is " + correctAnswer;
+        } else {
+            answerBox.style.backgroundColor = "#ef9a9a";
+            answerBox.style.display = "block";
+            answerBox.textContent = "Incorrect! The correct answer is " + correctAnswer;
+        }
+    }
+
+    function nextQuestion() {
+        const answerBox = document.getElementById("answer-box");
+        const nextButton = document.getElementById("next-button");
+        const pauseButton = document.getElementById("pause-button");
+        const resumeButton = document.getElementById("resume-button");
+
+        answerBox.style.display = "none"; // Hide answer box for the next question
+        nextButton.style.display = "none"; // Hide Next button until an option is selected
+
+        clearInterval(timerInterval); // Stop the timer
+
+        currentQuestion++;
+
+        if (currentQuestion < quizData.length) {
+            loadQuestion();
+        } else {
+            alert("Quiz completed!");
+            // You can add additional actions here when the quiz is completed
+        }
+    }
+
+    function pauseTimer() {
+        clearInterval(timerInterval); // Pause the timer
+        document.getElementById("pause-button").style.display = "none";
+        document.getElementById("resume-button").style.display = "block";
+    }
+
+    function resumeTimer() {
+        startTimer(); // Resume the timer
+        document.getElementById("pause-button").style.display = "block";
+        document.getElementById("resume-button").style.display = "none";
+    }
+
+    // Initial load
+    document.getElementById("pause-button").style.display = "none";
+    document.getElementById("resume-button").style.display = "none";
+</script>
+
+</body>
+</html>

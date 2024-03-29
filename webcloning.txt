@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dabotics Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        .hero {
+            background-color: #59abe3;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2, .hero p {
+            color: #fff;
+        }
+        
+        .services {
+            padding: 50px 0;
+        }
+        
+        .services h2 {
+            text-align: center;
+        }
+        
+        .service {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .service img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Dabotics</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Dabotics</h2>
+            <p>Discover the latest innovations in robotics.</p>
+            <a href="#" class="btn" style="background-color: #fff; color: #59abe3; padding: 10px 20px; border-radius: 5px; text-decoration: none;">Learn More</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service">
+                <img src="https://media.licdn.com/dms/image/D5622AQEV99UonmiDoA/feedshare-shrink_800/0/1710746864219?e=2147483647&v=beta&t=ejJBQ3rgGN33XjTnihUFWpzasw0XHgdWCGatu2fbIZM" alt="Service 1">
+                <h3>Robotics Workshops</h3>
+                <p>Join our hands-on robotics workshops and learn from experts.</p>
+            </div>
+            <div class="service">
+                <img src="https://www.dabotics.org/img/course-1.jpg" alt="Service 2">
+                <h3>Robotics Consultation</h3>
+                <p>Get expert advice and consultation on your robotics projects.</p>
+            </div>
+            <!-- Add more services as needed -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Dabotics. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
